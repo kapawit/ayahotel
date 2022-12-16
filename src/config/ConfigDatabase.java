@@ -61,7 +61,7 @@ public class ConfigDatabase extends javax.swing.JFrame {
         });
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Ip Address");
+        jLabel1.setText("Host");
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Port");
@@ -77,7 +77,7 @@ public class ConfigDatabase extends javax.swing.JFrame {
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asset/aya.png"))); // NOI18N
 
         btnSaveConfig.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnSaveConfig.setText("save");
+        btnSaveConfig.setText("Save");
         btnSaveConfig.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSaveConfigActionPerformed(evt);
@@ -93,7 +93,7 @@ public class ConfigDatabase extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(50, 50, 50)
                         .addComponent(ipaddressTF))
                     .addComponent(jSeparator1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -137,11 +137,14 @@ public class ConfigDatabase extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ipaddressTF)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(ipaddressTF, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(portTF))
@@ -194,8 +197,6 @@ public class ConfigDatabase extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSaveConfigActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnLogin;
-    private javax.swing.JButton btnLogin1;
     private javax.swing.JButton btnSaveConfig;
     private javax.swing.JButton btnTestCon;
     private javax.swing.JButton btnTestPing;
