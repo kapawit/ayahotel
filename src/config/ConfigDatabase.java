@@ -67,7 +67,7 @@ public class ConfigDatabase extends javax.swing.JFrame {
         jLabel2.setText("Port");
 
         btnTestPing.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnTestPing.setText("Tes Ping");
+        btnTestPing.setText("Test Ping");
         btnTestPing.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTestPingActionPerformed(evt);
