@@ -223,8 +223,7 @@ public class Main extends javax.swing.JFrame {
         });
 
         UserLabel.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        UserLabel.setForeground(new java.awt.Color(0, 0, 0));
-        UserLabel.setText("User : ");
+        UserLabel.setText("User: ");
 
         BtnLogout.setBackground(new java.awt.Color(255, 51, 51));
         BtnLogout.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
