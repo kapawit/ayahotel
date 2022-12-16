@@ -77,7 +77,7 @@ public class ConfigDatabase extends javax.swing.JFrame {
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asset/aya.png"))); // NOI18N
 
         btnSaveConfig.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnSaveConfig.setText("Save");
+        btnSaveConfig.setText("Save Cuy");
         btnSaveConfig.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSaveConfigActionPerformed(evt);
