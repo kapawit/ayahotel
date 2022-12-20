@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="dcf9eae2-9dad-4da6-a241-82e4ad9cfe1b">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
 	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
 	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
 	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
@@ -10,6 +13,7 @@
 			<style mode="Opaque" backcolor="#F0EFEF"/>
 		</conditionalStyle>
 	</style>
+	<parameter name="query" class="java.lang.String"/>
 	<queryString language="SQL">
 		<![CDATA[$P!{query}]]>
 	</queryString>
@@ -36,31 +40,31 @@
 	</background>
 	<title>
 		<band height="132" splitType="Stretch">
-			<image>
-				<reportElement x="456" y="0" width="99" height="132" uuid="7e557b8d-dd68-4222-9d7d-6064697ae8ab"/>
-				<imageExpression><![CDATA["cherry.jpg"]]></imageExpression>
-			</image>
 			<frame>
-				<reportElement mode="Opaque" x="0" y="0" width="451" height="95" backcolor="#000000" uuid="83ab82ba-5502-48d5-8571-9bcec2e5e414"/>
+				<reportElement mode="Opaque" x="0" y="0" width="552" height="95" backcolor="#000000" uuid="83ab82ba-5502-48d5-8571-9bcec2e5e414"/>
 				<staticText>
-					<reportElement style="Title" x="0" y="0" width="370" height="66" uuid="8fc674d4-c3d1-46f8-9752-e6c0fff5a311"/>
+					<reportElement style="Title" x="27" y="0" width="370" height="66" uuid="8fc674d4-c3d1-46f8-9752-e6c0fff5a311"/>
 					<textElement>
 						<font isBold="false"/>
 					</textElement>
-					<text><![CDATA[Cherry Title]]></text>
+					<text><![CDATA[AYA HOTEL]]></text>
 				</staticText>
 				<staticText>
-					<reportElement style="SubTitle" x="157" y="66" width="249" height="29" uuid="2de7ace5-5c21-4e31-8822-215999516e6d"/>
+					<reportElement style="SubTitle" x="27" y="66" width="249" height="29" uuid="2de7ace5-5c21-4e31-8822-215999516e6d"/>
 					<textElement>
 						<font size="22" isBold="false"/>
 					</textElement>
-					<text><![CDATA[Cherry SubTitle]]></text>
+					<text><![CDATA[REPORT INVOICE]]></text>
 				</staticText>
+				<image>
+					<reportElement x="380" y="9" width="150" height="80" uuid="0b4af519-e1d6-4ab3-abbd-67b9de079640"/>
+					<imageExpression><![CDATA["C:\\Users\\kapaw\\Documents\\NetBeansProjects\\pawitwahib.hotel\\src\\pawitwahib\\resources\\report\\aya.jpg"]]></imageExpression>
+				</image>
 			</frame>
 			<frame>
-				<reportElement mode="Opaque" x="0" y="100" width="451" height="32" forecolor="#000000" backcolor="#CC0000" uuid="20479ac4-6d78-49d5-9ff2-abd499644877"/>
+				<reportElement mode="Opaque" x="0" y="100" width="552" height="32" forecolor="#000000" backcolor="#CC0000" uuid="20479ac4-6d78-49d5-9ff2-abd499644877"/>
 				<textField pattern="EEEEE dd MMMMM yyyy">
-					<reportElement x="307" y="12" width="144" height="20" forecolor="#FFFFFF" uuid="f8e01171-f3e0-4c0c-88f1-6cce430b27b3"/>
+					<reportElement x="27" y="4" width="144" height="20" forecolor="#FFFFFF" uuid="f8e01171-f3e0-4c0c-88f1-6cce430b27b3"/>
 					<textElement textAlignment="Right">
 						<font size="12"/>
 					</textElement>

@@ -70,7 +70,6 @@ public class Report {
         Timestamp tsawal = new Timestamp(awal.getTime());
         Timestamp tsakhir = new Timestamp(akhir.getTime());
 
-
         DefaultTableModel t = new DefaultTableModel();
         t.addColumn("Kode Inv");
         t.addColumn("Nama Tamu");
@@ -98,12 +97,15 @@ public class Report {
     }
     
     public void printReportInvoice(Date awal, Date akhir){
-        Timestamp tsawal = new Timestamp(awal.getTime());
-        Timestamp tsakhir = new Timestamp(akhir.getTime());
-        String query = "SELECT * FROM invoice";
+        String query;
         if(awal != null && akhir != null){
-            query = "SELECT * FROM invoice WHERE timestamp BETWEEN '"+tsawal+"'  AND '"+tsakhir+"'";
+            Timestamp tsawal = new Timestamp(awal.getTime());
+            Timestamp tsakhir = new Timestamp(akhir.getTime());
+            query = "SELECT * FROM invoice WHERE timestamp BETWEEN '"+tsawal+"' AND '"+tsakhir+"'";  
+        } else {
+            query = "SELECT * FROM invoice";
         }
+        
         try {
             Map<String, Object> param = new HashMap<>();
             param.put("query", query);

@@ -556,7 +556,7 @@ public class Main extends javax.swing.JFrame {
 
     private void btnCetakInvoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCetakInvoiceActionPerformed
         Report report = new Report();
-//        report.printReport();
+        report.printReportInvoice(dateAwal.getDate(), dateAkhir.getDate());
     }//GEN-LAST:event_btnCetakInvoiceActionPerformed
 
     private void btnCetakKamarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCetakKamarActionPerformed
