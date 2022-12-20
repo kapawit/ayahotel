@@ -144,12 +144,12 @@ public class Report {
     }
     
     public void printReportKamar(){
-        String query = "select * from kamar inner join tipe_kamar on kamar.id_tipe = tipe_kamar.id;";
+        String query = "select * from kamar inner join tipe_kamar on kamar.id_tipe = tipe_kamar.id";
         try {
-            Map<String, Object> param = new HashMap<>();
-            param.put("query", query);
+            Map<String, Object> params = new HashMap<>();
+            params.put("query", query);
             JasperReport report = JasperCompileManager.compileReport("src/pawitwahib/resources/report/reportKamar.jrxml");
-            JasperPrint print = JasperFillManager.fillReport(report, param, con );
+            JasperPrint print = JasperFillManager.fillReport(report, params, con );
             JasperViewer.viewReport(print, false);
         } catch (JRException ex) {
             ex.printStackTrace();

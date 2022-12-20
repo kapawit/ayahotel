@@ -14,7 +14,7 @@
 		</conditionalStyle>
 	</style>
 	<queryString language="SQL">
-		<![CDATA["select * from kamar inner join tipe_kamar on kamar.id_tipe = tipe_kamar.id;]]>
+		<![CDATA[$P!{query}]]>
 	</queryString>
 	<field name="no_kamar" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
@@ -40,7 +40,7 @@
 					<textElement>
 						<font isBold="false"/>
 					</textElement>
-					<text><![CDATA[$p{judul}]]></text>
+					<text><![CDATA[AYA HOTEL]]></text>
 				</staticText>
 				<staticText>
 					<reportElement style="SubTitle" x="15" y="66" width="249" height="29" uuid="9554c962-0337-48eb-b32c-6576ecfe0208"/>

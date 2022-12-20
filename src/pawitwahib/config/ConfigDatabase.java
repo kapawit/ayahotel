@@ -184,11 +184,15 @@ public class ConfigDatabase extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTestPingActionPerformed
 
     private void btnTestConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTestConActionPerformed
-        Config.testConnection(ipaddressTF.getText(),portTF.getText(), userTF.getText(), passTF.getText());
+        char[] password = passTF.getPassword();
+        String passwordString = String.valueOf(password);
+        Config.testConnection(ipaddressTF.getText(),portTF.getText(), userTF.getText(), passwordString);
     }//GEN-LAST:event_btnTestConActionPerformed
 
     private void btnSaveConfigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveConfigActionPerformed
-         boolean cek = Config.saveDatabaseConfig(ipaddressTF.getText(),portTF.getText(), userTF.getText(), passTF.getText());
+        char[] password = passTF.getPassword();
+        String passwordString = String.valueOf(password); 
+        boolean cek = Config.saveDatabaseConfig(ipaddressTF.getText(),portTF.getText(), userTF.getText(), passwordString);
          if(cek == true){
             this.dispose();
             Login login = new Login();
