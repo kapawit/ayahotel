@@ -67,6 +67,7 @@ public class Report {
     }
     
     public void reportInvoiceByDate(JTable tbReport, Date awal, Date akhir){
+        if(awal != null && akhir != null){
         Timestamp tsawal = new Timestamp(awal.getTime());
         Timestamp tsakhir = new Timestamp(akhir.getTime());
 
@@ -92,6 +93,7 @@ public class Report {
             }
         } catch(SQLException e){
             JOptionPane.showMessageDialog(null, e);
+        }
         }
         
     }
