@@ -26,11 +26,11 @@ public class Kamar extends javax.swing.JFrame {
     private ResultSet res;
     private String sql;
     private DefaultTableModel dtm;
-    private JTable table;
 
     /**
      * Creates new form kamar
      */
+    
     public Kamar() {
         initComponents();
         getTipeKamar();
@@ -39,9 +39,8 @@ public class Kamar extends javax.swing.JFrame {
     
     private void savekamar(){
         try {
-            int tipe = tipekamar.getSelectedIndex() + 1;
             sql = "insert into kamar (id_tipe, no_kamar, status)  values ("
-                    + "'" + tipe + "',"
+                    + "'" + tipekamar.getSelectedIndex() + 1 + "',"
                     + "'" + nokamar.getText()+ "',"
                     + "'" + statuskamar.getText()+ "')";
             stat = con.createStatement();
@@ -55,7 +54,6 @@ public class Kamar extends javax.swing.JFrame {
     public void getKamar(JTable tablekamar){
         int i = 1;
         String status;
-        table = tablekamar;
         DefaultTableModel t = new DefaultTableModel();
         t.addColumn("No");
         t.addColumn("No Kamar");
@@ -68,6 +66,7 @@ public class Kamar extends javax.swing.JFrame {
             stat = con.createStatement();
             res = stat.executeQuery(sql);
             while(res.next()){
+                int no = i++;
                 int s = Integer.parseInt(res.getString("status"));
                 if(s != 0){
                     status ="Available";
@@ -75,7 +74,7 @@ public class Kamar extends javax.swing.JFrame {
                     status = "Occupied";
                 }
                 t.addRow(new Object[] {
-                    res.getString(i++),
+                    no,
                     res.getString("no_kamar"),
                     res.getString("kategori"),
                     res.getString("harga"),

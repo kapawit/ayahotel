@@ -561,7 +561,6 @@ public class Main extends javax.swing.JFrame {
         new Beranda().setBackgroundImage(panelhomebg);
         new Clock().jam(labelJam);
         new Clock().kalender(labelkalender);
-
     }//GEN-LAST:event_btnHomeActionPerformed
 
     private void btnRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRoomActionPerformed
