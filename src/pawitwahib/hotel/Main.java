@@ -30,6 +30,10 @@ public class Main extends javax.swing.JFrame {
         btnReport.addActionListener(new Listener());
         panelHome.setVisible(true);
         UserLabel.setText("User : "+Uname);
+        new Beranda().setBackgroundImage(panelhomebg);
+        new Clock().jam(labelJam);
+        new Clock().kalender(labelkalender);
+
     }
     
     /**
@@ -52,8 +56,12 @@ public class Main extends javax.swing.JFrame {
         UserLabel = new javax.swing.JLabel();
         BtnLogout = new javax.swing.JButton();
         btnTrans = new javax.swing.JButton();
+        labelJam = new javax.swing.JLabel();
+        labelkalender = new javax.swing.JLabel();
+        jSeparator4 = new javax.swing.JSeparator();
         jPanel1 = new javax.swing.JPanel();
         panelHome = new javax.swing.JPanel();
+        panelhomebg = new javax.swing.JPanel();
         panelTransaction = new javax.swing.JPanel();
         panelRoom = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
@@ -98,7 +106,7 @@ public class Main extends javax.swing.JFrame {
 
         btnHome.setBackground(new java.awt.Color(153, 153, 153));
         btnHome.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        btnHome.setText("Home");
+        btnHome.setText("BERANDA");
         btnHome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnHomeActionPerformed(evt);
@@ -107,7 +115,7 @@ public class Main extends javax.swing.JFrame {
 
         btnRoom.setBackground(new java.awt.Color(153, 153, 153));
         btnRoom.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        btnRoom.setText("Room");
+        btnRoom.setText("KAMAR");
         btnRoom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRoomActionPerformed(evt);
@@ -116,7 +124,7 @@ public class Main extends javax.swing.JFrame {
 
         btnGuest.setBackground(new java.awt.Color(153, 153, 153));
         btnGuest.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        btnGuest.setText("Guest");
+        btnGuest.setText("TAMU");
         btnGuest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGuestActionPerformed(evt);
@@ -125,7 +133,7 @@ public class Main extends javax.swing.JFrame {
 
         btnReport.setBackground(new java.awt.Color(153, 153, 153));
         btnReport.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        btnReport.setText("Report");
+        btnReport.setText("REPORT");
         btnReport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnReportActionPerformed(evt);
@@ -147,68 +155,100 @@ public class Main extends javax.swing.JFrame {
 
         btnTrans.setBackground(new java.awt.Color(153, 153, 153));
         btnTrans.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        btnTrans.setText("Transaction");
+        btnTrans.setText("TRANSAKSI");
         btnTrans.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTransActionPerformed(evt);
             }
         });
 
+        labelJam.setBackground(null);
+        labelJam.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        labelJam.setText("JAM");
+        labelJam.setOpaque(false);
+
+        labelkalender.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        labelkalender.setText("Kalender");
+
         javax.swing.GroupLayout PanelSidebarLayout = new javax.swing.GroupLayout(PanelSidebar);
         PanelSidebar.setLayout(PanelSidebarLayout);
         PanelSidebarLayout.setHorizontalGroup(
             PanelSidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelSidebarLayout.createSequentialGroup()
+            .addGroup(PanelSidebarLayout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addGroup(PanelSidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(UserLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(UserLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(BtnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnRoom, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnHome, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
                     .addComponent(btnGuest, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnReport, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnTrans, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnReport, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnTrans, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSeparator4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36))
+            .addGroup(PanelSidebarLayout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addGroup(PanelSidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(labelJam)
+                    .addComponent(labelkalender))
+                .addContainerGap())
         );
         PanelSidebarLayout.setVerticalGroup(
             PanelSidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelSidebarLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(30, 30, 30)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelJam)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelkalender)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 5, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnTrans, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnRoom, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnGuest, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnReport, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                .addComponent(UserLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(28, 28, 28)
+                .addComponent(UserLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(BtnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30))
         );
 
         jPanel1.setLayout(new java.awt.CardLayout());
 
-        panelHome.setBackground(new java.awt.Color(102, 102, 102));
+        panelHome.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout panelhomebgLayout = new javax.swing.GroupLayout(panelhomebg);
+        panelhomebg.setLayout(panelhomebgLayout);
+        panelhomebgLayout.setHorizontalGroup(
+            panelhomebgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 535, Short.MAX_VALUE)
+        );
+        panelhomebgLayout.setVerticalGroup(
+            panelhomebgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 571, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout panelHomeLayout = new javax.swing.GroupLayout(panelHome);
         panelHome.setLayout(panelHomeLayout);
         panelHomeLayout.setHorizontalGroup(
             panelHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 856, Short.MAX_VALUE)
+            .addComponent(panelhomebg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         panelHomeLayout.setVerticalGroup(
             panelHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 567, Short.MAX_VALUE)
+            .addComponent(panelhomebg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jPanel1.add(panelHome, "card2");
@@ -223,7 +263,7 @@ public class Main extends javax.swing.JFrame {
         );
         panelTransactionLayout.setVerticalGroup(
             panelTransactionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 567, Short.MAX_VALUE)
+            .addGap(0, 571, Short.MAX_VALUE)
         );
 
         jPanel1.add(panelTransaction, "card3");
@@ -274,7 +314,7 @@ public class Main extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 394, Short.MAX_VALUE)
                 .addGap(50, 50, 50))
         );
 
@@ -369,7 +409,7 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 378, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -429,7 +469,7 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(kamarscrollpane, javax.swing.GroupLayout.DEFAULT_SIZE, 378, Short.MAX_VALUE)
+                .addComponent(kamarscrollpane, javax.swing.GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -457,7 +497,7 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 491, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1)
                 .addContainerGap())
         );
 
@@ -474,7 +514,7 @@ public class Main extends javax.swing.JFrame {
         );
         panelGuestLayout.setVerticalGroup(
             panelGuestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 567, Short.MAX_VALUE)
+            .addGap(0, 571, Short.MAX_VALUE)
         );
 
         jPanel1.add(panelGuest, "card6");
@@ -503,6 +543,10 @@ public class Main extends javax.swing.JFrame {
         panelRoom.setVisible(false);
         panelGuest.setVisible(false);
         panelReport.setVisible(false);
+        new Beranda().setBackgroundImage(panelhomebg);
+        new Clock().jam(labelJam);
+        new Clock().kalender(labelkalender);
+
     }//GEN-LAST:event_btnHomeActionPerformed
 
     private void btnRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRoomActionPerformed
@@ -609,13 +653,17 @@ class Listener implements ActionListener {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JScrollPane kamarscrollpane;
+    private javax.swing.JLabel labelJam;
+    private javax.swing.JLabel labelkalender;
     private javax.swing.JPanel panelGuest;
     private javax.swing.JPanel panelHome;
     private javax.swing.JPanel panelReport;
     private javax.swing.JPanel panelRoom;
     private javax.swing.JPanel panelTransaction;
+    private javax.swing.JPanel panelhomebg;
     // End of variables declaration//GEN-END:variables
 }
