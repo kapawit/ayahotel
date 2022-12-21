@@ -25,7 +25,7 @@ public class Beranda {
     ImageIcon icon = new ImageIcon("src/pawitwahib/resources/asset/ayahotel.jpg");
     JLabel label = new JLabel(icon);
     panel.add(label);
-    panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
+//    panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
 }
 
 }
