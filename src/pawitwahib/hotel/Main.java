@@ -28,7 +28,7 @@ public class Main extends javax.swing.JFrame {
         btnHome.addActionListener(new Listener());
         btnTrans.addActionListener(new Listener());
         btnRoom.addActionListener(new Listener());
-        btnGuest.addActionListener(new Listener());
+        btnTamu.addActionListener(new Listener());
         btnReport.addActionListener(new Listener());
         panelHome.setVisible(true);
         UserLabel.setText("User : "+Uname);
@@ -52,7 +52,7 @@ public class Main extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         btnHome = new javax.swing.JButton();
         btnRoom = new javax.swing.JButton();
-        btnGuest = new javax.swing.JButton();
+        btnTamu = new javax.swing.JButton();
         btnReport = new javax.swing.JButton();
         UserLabel = new javax.swing.JLabel();
         BtnLogout = new javax.swing.JButton();
@@ -70,15 +70,17 @@ public class Main extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         transaksigettipekamar = new javax.swing.JComboBox<>();
         transnokamar = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btntransaksisewa = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jDateChooser2 = new com.toedter.calendar.JDateChooser();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        panelRoom = new javax.swing.JPanel();
+        panelKamar = new javax.swing.JPanel();
         btntambahkamar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
@@ -104,7 +106,13 @@ public class Main extends javax.swing.JFrame {
         TRkamar = new javax.swing.JTable();
         jPanel6 = new javax.swing.JPanel();
         btnCetakKamar = new javax.swing.JButton();
-        panelGuest = new javax.swing.JPanel();
+        panelTamu = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        btntambahtamu = new javax.swing.JButton();
+        btnhapustamu = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tabletamu = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
@@ -139,12 +147,12 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        btnGuest.setBackground(new java.awt.Color(153, 153, 153));
-        btnGuest.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        btnGuest.setText("TAMU");
-        btnGuest.addActionListener(new java.awt.event.ActionListener() {
+        btnTamu.setBackground(new java.awt.Color(153, 153, 153));
+        btnTamu.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btnTamu.setText("TAMU");
+        btnTamu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuestActionPerformed(evt);
+                btnTamuActionPerformed(evt);
             }
         });
 
@@ -199,7 +207,7 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(btnRoom, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
-                    .addComponent(btnGuest, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnTamu, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnReport, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnTrans, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jSeparator4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -232,7 +240,7 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnRoom, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnGuest, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnTamu, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnReport, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
@@ -293,7 +301,12 @@ public class Main extends javax.swing.JFrame {
 
         transnokamar.setEnabled(false);
 
-        jButton1.setText("Sewa");
+        btntransaksisewa.setText("Sewa");
+        btntransaksisewa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btntransaksisewaActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Reservasi");
 
@@ -301,58 +314,66 @@ public class Main extends javax.swing.JFrame {
 
         jLabel10.setText("Tanggal Akhir");
 
+        jLabel11.setText("Nama Tamu");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel9))
+                .addGap(23, 23, 23)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(transnokamar)
+                    .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, 323, Short.MAX_VALUE)
+                    .addComponent(transaksigettipekamar, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(transaksigettipekamar, 0, 212, Short.MAX_VALUE)
-                    .addComponent(transnokamar))
-                .addGap(42, 42, 42)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE))
-                .addGap(32, 32, 32)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jDateChooser2, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE))
-                .addGap(34, 34, 34)
+                    .addComponent(jLabel11)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextField1)
+                            .addComponent(jDateChooser2, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 158, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btntransaksisewa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel10))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(21, 21, 21))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(transaksigettipekamar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(transnokamar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(transaksigettipekamar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(transnokamar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel11))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel10)
+                                .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btntransaksisewa))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel9))
+                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -385,15 +406,15 @@ public class Main extends javax.swing.JFrame {
             .addGroup(panelTransactionLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 345, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         panelKonten.add(panelTransaction, "card3");
 
-        panelRoom.setBackground(new java.awt.Color(255, 255, 255));
-        panelRoom.setMaximumSize(new java.awt.Dimension(1920, 1080));
+        panelKamar.setBackground(new java.awt.Color(255, 255, 255));
+        panelKamar.setMaximumSize(new java.awt.Dimension(1920, 1080));
 
         btntambahkamar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btntambahkamar.setText("Tambah");
@@ -427,15 +448,15 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout panelRoomLayout = new javax.swing.GroupLayout(panelRoom);
-        panelRoom.setLayout(panelRoomLayout);
-        panelRoomLayout.setHorizontalGroup(
-            panelRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRoomLayout.createSequentialGroup()
+        javax.swing.GroupLayout panelKamarLayout = new javax.swing.GroupLayout(panelKamar);
+        panelKamar.setLayout(panelKamarLayout);
+        panelKamarLayout.setHorizontalGroup(
+            panelKamarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelKamarLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelKamarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 988, Short.MAX_VALUE)
-                    .addGroup(panelRoomLayout.createSequentialGroup()
+                    .addGroup(panelKamarLayout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnhapuskamar, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -444,11 +465,11 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(jSeparator2))
                 .addContainerGap())
         );
-        panelRoomLayout.setVerticalGroup(
-            panelRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRoomLayout.createSequentialGroup()
+        panelKamarLayout.setVerticalGroup(
+            panelKamarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelKamarLayout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addGroup(panelRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelKamarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btntambahkamar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
                     .addComponent(btnhapuskamar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -459,7 +480,7 @@ public class Main extends javax.swing.JFrame {
                 .addGap(40, 40, 40))
         );
 
-        panelKonten.add(panelRoom, "card4");
+        panelKonten.add(panelKamar, "card4");
 
         panelReport.setBackground(new java.awt.Color(204, 204, 204));
         panelReport.setEnabled(false);
@@ -651,21 +672,85 @@ public class Main extends javax.swing.JFrame {
 
         panelKonten.add(panelReport, "card5");
 
-        panelGuest.setBackground(new java.awt.Color(255, 255, 153));
-        panelGuest.setMaximumSize(new java.awt.Dimension(800, 600));
+        panelTamu.setBackground(new java.awt.Color(204, 204, 204));
+        panelTamu.setMaximumSize(new java.awt.Dimension(800, 600));
 
-        javax.swing.GroupLayout panelGuestLayout = new javax.swing.GroupLayout(panelGuest);
-        panelGuest.setLayout(panelGuestLayout);
-        panelGuestLayout.setHorizontalGroup(
-            panelGuestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel12.setText("DATA TAMU");
+
+        btntambahtamu.setText("Tambah");
+        btntambahtamu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btntambahtamuActionPerformed(evt);
+            }
+        });
+
+        btnhapustamu.setText("Hapus");
+        btnhapustamu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnhapustamuActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnhapustamu)
+                .addGap(18, 18, 18)
+                .addComponent(btntambahtamu)
+                .addGap(28, 28, 28))
         );
-        panelGuestLayout.setVerticalGroup(
-            panelGuestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btntambahtamu, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnhapustamu, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
-        panelKonten.add(panelGuest, "card6");
+        tabletamu.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane4.setViewportView(tabletamu);
+
+        javax.swing.GroupLayout panelTamuLayout = new javax.swing.GroupLayout(panelTamu);
+        panelTamu.setLayout(panelTamuLayout);
+        panelTamuLayout.setHorizontalGroup(
+            panelTamuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelTamuLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelTamuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 988, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        panelTamuLayout.setVerticalGroup(
+            panelTamuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelTamuLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 667, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        panelKonten.add(panelTamu, "card6");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -691,8 +776,8 @@ public class Main extends javax.swing.JFrame {
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
         panelHome.setVisible(true);
         panelTransaction.setVisible(false);
-        panelRoom.setVisible(false);
-        panelGuest.setVisible(false);
+        panelKamar.setVisible(false);
+        panelTamu.setVisible(false);
         panelReport.setVisible(false);
         new Clock().jam(labelJam);
         new Clock().kalender(labelkalender);
@@ -701,8 +786,8 @@ public class Main extends javax.swing.JFrame {
     private void btnRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRoomActionPerformed
         panelHome.setVisible(false);
         panelTransaction.setVisible(false);
-        panelRoom.setVisible(true);
-        panelGuest.setVisible(false);
+        panelKamar.setVisible(true);
+        panelTamu.setVisible(false);
         panelReport.setVisible(false);
         new Kamar().getKamar(tableKamar);
 
@@ -719,24 +804,26 @@ public class Main extends javax.swing.JFrame {
     private void btnTransActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTransActionPerformed
         panelHome.setVisible(false);
         panelTransaction.setVisible(true);
-        panelRoom.setVisible(false);
-        panelGuest.setVisible(false);
+        panelKamar.setVisible(false);
+        panelTamu.setVisible(false);
         panelReport.setVisible(false);
+        
     }//GEN-LAST:event_btnTransActionPerformed
 
-    private void btnGuestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuestActionPerformed
+    private void btnTamuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTamuActionPerformed
         panelHome.setVisible(false);
         panelTransaction.setVisible(false);
-        panelRoom.setVisible(false);
-        panelGuest.setVisible(true);
+        panelKamar.setVisible(false);
+        panelTamu.setVisible(true);
         panelReport.setVisible(false);
-    }//GEN-LAST:event_btnGuestActionPerformed
+        new Tamu().getTamu(tabletamu);
+    }//GEN-LAST:event_btnTamuActionPerformed
 
     private void btnReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportActionPerformed
         panelHome.setVisible(false);
         panelTransaction.setVisible(false);
-        panelRoom.setVisible(false);
-        panelGuest.setVisible(false);
+        panelKamar.setVisible(false);
+        panelTamu.setVisible(false);
         panelReport.setVisible(true);
         new Report().reportInvoice(TRinvoice);
         new Report().reportKamar(TRkamar);
@@ -770,6 +857,18 @@ public class Main extends javax.swing.JFrame {
            transnokamar.setText(no); 
     }//GEN-LAST:event_transaksigettipekamarActionPerformed
 
+    private void btntransaksisewaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntransaksisewaActionPerformed
+//       btntransaksisewa
+    }//GEN-LAST:event_btntransaksisewaActionPerformed
+
+    private void btntambahtamuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntambahtamuActionPerformed
+       new Tamu().setVisible(true);
+    }//GEN-LAST:event_btntambahtamuActionPerformed
+
+    private void btnhapustamuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnhapustamuActionPerformed
+        new Tamu().hapusTamu(tabletamu,btnTamu);
+    }//GEN-LAST:event_btnhapustamuActionPerformed
+
     
 class Listener implements ActionListener {
     @Override
@@ -792,22 +891,26 @@ class Listener implements ActionListener {
     private javax.swing.JLabel UserLabel;
     private javax.swing.JButton btnCetakInvoice;
     private javax.swing.JButton btnCetakKamar;
-    private javax.swing.JButton btnGuest;
     private javax.swing.JButton btnHome;
     private javax.swing.JButton btnLihatInvoice;
     private javax.swing.JButton btnReport;
     private javax.swing.JButton btnRoom;
+    private javax.swing.JButton btnTamu;
     private javax.swing.JButton btnTrans;
     private javax.swing.JButton btnhapuskamar;
+    private javax.swing.JButton btnhapustamu;
     private javax.swing.JButton btntambahkamar;
+    private javax.swing.JButton btntambahtamu;
+    private javax.swing.JButton btntransaksisewa;
     private com.toedter.calendar.JDateChooser dateAkhir;
     private com.toedter.calendar.JDateChooser dateAwal;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -820,27 +923,31 @@ class Listener implements ActionListener {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JScrollPane kamarscrollpane;
     private javax.swing.JLabel labelJam;
     private javax.swing.JLabel labelkalender;
-    private javax.swing.JPanel panelGuest;
     private javax.swing.JPanel panelHome;
+    private javax.swing.JPanel panelKamar;
     private javax.swing.JPanel panelKonten;
     private javax.swing.JPanel panelReport;
-    private javax.swing.JPanel panelRoom;
+    private javax.swing.JPanel panelTamu;
     private javax.swing.JPanel panelTransaction;
     private javax.swing.JPanel panelhomebg;
     private javax.swing.JTable tableKamar;
+    private javax.swing.JTable tabletamu;
     private javax.swing.JComboBox<String> transaksigettipekamar;
     private javax.swing.JTextField transnokamar;
     // End of variables declaration//GEN-END:variables
