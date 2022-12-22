@@ -38,7 +38,7 @@ public class Kamar extends javax.swing.JFrame {
         getTipeKamar(tipekamar);
         setLocationRelativeTo(null);
     }
-    
+       
     public void getKamar(JTable tablekamar){
         Statement stat;
         ResultSet res;
@@ -80,6 +80,7 @@ public class Kamar extends javax.swing.JFrame {
     }
     
     public void getTipeKamar(JComboBox cb){
+        cb.removeAllItems();
         Statement stat;
         ResultSet res;
         String sql;
@@ -88,7 +89,8 @@ public class Kamar extends javax.swing.JFrame {
             stat = con.createStatement();
             res = stat.executeQuery(sql);
             while(res.next()){
-                cb.addItem(res.getString("kategori"));
+                cb.addItem(new ComboItem(res.getString("kategori"), res.getInt("id")));
+
             }
         } catch(SQLException e){
             JOptionPane.showMessageDialog(null, e);
@@ -124,9 +126,11 @@ public class Kamar extends javax.swing.JFrame {
         Statement stat;
         ResultSet res;
         String sql;
+        ComboItem selectedItem = (ComboItem) tipekamar.getSelectedItem();
+        int id = selectedItem.getId();
         try {
             sql = "insert into kamar (id_tipe, no_kamar, status)  values ("
-                    + "'" + Integer.sum(tipekamar.getSelectedIndex(), 1)+ "',"
+                    + "'" + id + "',"
                     + "'" + nokamar.getText()+ "',"
                     + "'" + statuskamar.getText()+ "')";
             stat = con.createStatement();

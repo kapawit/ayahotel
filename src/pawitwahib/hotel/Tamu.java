@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package pawitwahib.hotel;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -36,6 +35,23 @@ public class Tamu extends javax.swing.JFrame {
     public Tamu() {
         initComponents();
         setLocationRelativeTo(null);
+    }
+    public void getTamudropdown(JComboBox cb){
+        cb.removeAllItems();
+        Statement stat;
+        ResultSet res;
+        String sql;
+        try{
+            sql = "SELECT * FROM tamu";
+            stat = con.createStatement();
+            res = stat.executeQuery(sql);
+            while(res.next()){
+                cb.addItem(new ComboItem(res.getString("nama"), res.getInt("id")));
+            }
+        } catch(SQLException e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+        cb.setSelectedIndex(-1);
     }
     
     public void getTamu(JTable tabletamu){
