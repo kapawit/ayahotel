@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -156,7 +157,7 @@ public class Transaksi {
         t.addColumn("id");
         tablecekin.setModel(t);
         try{
-            sql = "SELECT * FROM inap RIGHT join tamu on inap.id_tamu = tamu.id join kamar on kamar.id=inap.id_kamar;";
+            sql = "SELECT * FROM inap RIGHT join tamu on inap.id_tamu = tamu.id join kamar on kamar.id=inap.id_kamar WHERE DATE(timestamp) = CURDATE();;";
             stat = con.createStatement();
             res = stat.executeQuery(sql);
             while(res.next()){
