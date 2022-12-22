@@ -63,6 +63,7 @@ public class Main extends javax.swing.JFrame {
         panelKonten = new javax.swing.JPanel();
         panelHome = new javax.swing.JPanel();
         panelhomebg = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
         panelTransaction = new javax.swing.JPanel();
         panelRoom = new javax.swing.JPanel();
         btntambahkamar = new javax.swing.JButton();
@@ -97,9 +98,7 @@ public class Main extends javax.swing.JFrame {
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setExtendedState(1);
         setIconImages(null);
-        setMaximumSize(new java.awt.Dimension(1920, 1080));
         setName("mainframe"); // NOI18N
-        setPreferredSize(new java.awt.Dimension(1366, 768));
 
         PanelSidebar.setBackground(new java.awt.Color(204, 204, 204));
         PanelSidebar.setMaximumSize(new java.awt.Dimension(3276, 32767));
@@ -235,15 +234,23 @@ public class Main extends javax.swing.JFrame {
 
         panelHome.setBackground(new java.awt.Color(255, 255, 255));
 
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pawitwahib/resources/asset/beranda.png"))); // NOI18N
+
         javax.swing.GroupLayout panelhomebgLayout = new javax.swing.GroupLayout(panelhomebg);
         panelhomebg.setLayout(panelhomebgLayout);
         panelhomebgLayout.setHorizontalGroup(
             panelhomebgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(panelhomebgLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 988, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelhomebgLayout.setVerticalGroup(
             panelhomebgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelhomebgLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 746, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout panelHomeLayout = new javax.swing.GroupLayout(panelHome);
@@ -316,7 +323,7 @@ public class Main extends javax.swing.JFrame {
             .addGroup(panelRoomLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1115, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 988, Short.MAX_VALUE)
                     .addGroup(panelRoomLayout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -377,11 +384,11 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
-                    .addComponent(dateAwal, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE))
+                    .addComponent(dateAwal, javax.swing.GroupLayout.DEFAULT_SIZE, 375, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8)
-                    .addComponent(dateAkhir, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE))
+                    .addComponent(dateAkhir, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE))
                 .addGap(61, 61, 61)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnCetakInvoice, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -429,7 +436,7 @@ public class Main extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1030, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 903, Short.MAX_VALUE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -489,7 +496,7 @@ public class Main extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(kamarscrollpane, javax.swing.GroupLayout.DEFAULT_SIZE, 1030, Short.MAX_VALUE)
+                    .addComponent(kamarscrollpane, javax.swing.GroupLayout.DEFAULT_SIZE, 903, Short.MAX_VALUE)
                     .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -683,6 +690,7 @@ class Listener implements ActionListener {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel2;
