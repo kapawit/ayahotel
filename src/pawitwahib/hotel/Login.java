@@ -139,26 +139,32 @@ public class Login extends javax.swing.JFrame {
         Connection con = Koneksi.Koneksi();
         ResultSet rs;
         String sql;
-        try {
-            Statement state = con.createStatement();
-            char[] password = passTF.getPassword();
-            String passwordString = String.valueOf(password);
-            sql = "SELECT * FROM user WHERE username='"+unameTF.getText()+"' AND password='"+passwordString+"'";
-            rs = state.executeQuery(sql);
-            if(rs.next()){
-                if (passwordString.equals(rs.getString("password"))) {
-                    Id = rs.getInt("id");
-                    Uname = rs.getString("username");
-                    Main Main = new Main();
-                    this.dispose();
-                    Main.setVisible(true);
+        if(con == null){
+            JOptionPane.showMessageDialog(null, "Tidak dapat terkoneksi ke Database");
+        } else {
+            try {
+                Statement state = con.createStatement();
+                char[] password = passTF.getPassword();
+                String passwordString = String.valueOf(password);
+                sql = "SELECT * FROM user WHERE username='"+unameTF.getText()+"' AND password='"+passwordString+"'";
+                rs = state.executeQuery(sql);
+                if(rs.next()){
+                    if (passwordString.equals(rs.getString("password"))) {
+                        Id = rs.getInt("id");
+                        Uname = rs.getString("username");
+                        Main Main = new Main();
+                        this.dispose();
+                        Main.setVisible(true);
+                    }
+                } else {
+                        JOptionPane.showMessageDialog(null, "username atau password salah");
                 }
-            } else {
-                    JOptionPane.showMessageDialog(null, "username atau password salah");
-            }
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
-        } 
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(this, e.getMessage());
+            } 
+        
+        }
+        
     }//GEN-LAST:event_btnLoginActionPerformed
 
     /**
