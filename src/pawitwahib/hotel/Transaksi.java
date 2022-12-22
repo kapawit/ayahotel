@@ -36,7 +36,7 @@ public class Transaksi {
         Date date = new Date();
         Timestamp tsawal = new Timestamp(awal.getTime());
         Timestamp tsakhir = new Timestamp(akhir.getTime());
-        Timestamp timestamp = new Timestamp(date.getTime());
+        Timestamp timestamp = new Timestamp(date.getTime());   
         try {
             sql = "insert into reservasi (id_tamu, id_user, id_tipe, tgl_awal, tgl_akhir, timestamp) values ("
                     + "'" + idTamu + "',"
