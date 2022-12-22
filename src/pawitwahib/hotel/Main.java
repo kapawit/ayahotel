@@ -79,7 +79,7 @@ public class Main extends javax.swing.JFrame {
         cbtransaksitamu = new javax.swing.JComboBox<>();
         jLabel11 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabletransaksi = new javax.swing.JTable();
         panelKamar = new javax.swing.JPanel();
         btntambahkamar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -395,7 +395,7 @@ public class Main extends javax.swing.JFrame {
                 .addGap(20, 20, 20))
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabletransaksi.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -406,7 +406,7 @@ public class Main extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane3.setViewportView(jTable1);
+        jScrollPane3.setViewportView(tabletransaksi);
 
         javax.swing.GroupLayout panelTransactionLayout = new javax.swing.GroupLayout(panelTransaction);
         panelTransaction.setLayout(panelTransactionLayout);
@@ -824,6 +824,7 @@ public class Main extends javax.swing.JFrame {
         panelKamar.setVisible(false);
         panelTamu.setVisible(false);
         panelReport.setVisible(false);
+        new Transaksi().getTransaksiReservasi(tabletransaksi);
         new Kamar().getTipeKamar(transaksigettipekamar);
         new Tamu().getTamudropdown(cbtransaksitamu);
     }//GEN-LAST:event_btnTransActionPerformed
@@ -961,7 +962,6 @@ class Listener implements ActionListener {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JScrollPane kamarscrollpane;
     private javax.swing.JLabel labelJam;
     private javax.swing.JLabel labelkalender;
@@ -974,6 +974,7 @@ class Listener implements ActionListener {
     private javax.swing.JPanel panelhomebg;
     private javax.swing.JTable tableKamar;
     private javax.swing.JTable tabletamu;
+    private javax.swing.JTable tabletransaksi;
     private com.toedter.calendar.JDateChooser tgltransaksiakhir;
     private com.toedter.calendar.JDateChooser tgltransaksiawal;
     private javax.swing.JComboBox<String> transaksigettipekamar;

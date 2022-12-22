@@ -15,6 +15,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 import pawitwahib.config.Koneksi;
 
 /**
@@ -52,4 +54,47 @@ public class Transaksi {
             Logger.getLogger(Kamar.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+        public void getTransaksiReservasi(JTable tabletransaksi){
+        Connection con = Koneksi.Koneksi();
+        Statement stat;
+        ResultSet res;
+        String sql;
+        String status;
+        int i =1;
+        DefaultTableModel t = new DefaultTableModel();
+        t.addColumn("No");
+        t.addColumn("Nama");
+        t.addColumn("Status Member");
+        t.addColumn("Tipe Kamar");
+        t.addColumn("Tgl Awal");
+        t.addColumn("Tgl Akhir");
+        t.addColumn("id");
+        tabletransaksi.setModel(t);
+        try{
+            sql = "SELECT * FROM reservasi inner join tamu on reservasi.id_tamu = tamu.id inner join tipe_kamar on reservasi.id_tipe ";
+            stat = con.createStatement();
+            res = stat.executeQuery(sql);
+            while(res.next()){
+                int s = Integer.parseInt(res.getString("status_member"));
+                if(s != 0){
+                    status ="Non Member";
+                } else {
+                    status = "Member";
+                }
+                t.addRow(new Object[] {
+                    i++,
+                    res.getString("nama"),
+                    status,
+                    res.getString("kategori"),
+                    res.getString("tgl_awal"),
+                    res.getString("tgl_akhir"),
+                    res.getString("id")
+                });
+            }
+        } catch(SQLException e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+        tabletransaksi.getColumn("id").setMaxWidth(0);
+    }
+
 }
