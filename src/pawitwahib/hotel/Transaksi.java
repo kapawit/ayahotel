@@ -205,7 +205,7 @@ public class Transaksi {
                     sql = "UPDATE inap SET tgl_keluar = CURDATE(), tgl_masuk = '"+date+"' where id='"+id+"'";
                     PreparedStatement st = con.prepareStatement(sql);
                     st.executeUpdate();
-                    JOptionPane.showMessageDialog(null, "Chekout Sukses");
+                    new Cekout().bayar(id);
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null, "chekout Gagal");
                 }
