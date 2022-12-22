@@ -70,6 +70,7 @@ public class Main extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableKamar = new javax.swing.JTable();
+        btnhapuskamar = new javax.swing.JButton();
         panelReport = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
@@ -96,6 +97,9 @@ public class Main extends javax.swing.JFrame {
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setExtendedState(1);
         setIconImages(null);
+        setMaximumSize(new java.awt.Dimension(1920, 1080));
+        setName("mainframe"); // NOI18N
+        setPreferredSize(new java.awt.Dimension(1366, 768));
 
         PanelSidebar.setBackground(new java.awt.Color(204, 204, 204));
         PanelSidebar.setMaximumSize(new java.awt.Dimension(3276, 32767));
@@ -297,6 +301,14 @@ public class Main extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tableKamar);
 
+        btnhapuskamar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnhapuskamar.setText("Hapus");
+        btnhapuskamar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnhapuskamarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelRoomLayout = new javax.swing.GroupLayout(panelRoom);
         panelRoom.setLayout(panelRoomLayout);
         panelRoomLayout.setHorizontalGroup(
@@ -304,10 +316,12 @@ public class Main extends javax.swing.JFrame {
             .addGroup(panelRoomLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 477, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1115, Short.MAX_VALUE)
                     .addGroup(panelRoomLayout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnhapuskamar, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btntambahkamar, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jSeparator2))
                 .addContainerGap())
@@ -318,11 +332,12 @@ public class Main extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addGroup(panelRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btntambahkamar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(jLabel2)
+                    .addComponent(btnhapuskamar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 650, Short.MAX_VALUE)
                 .addGap(40, 40, 40))
         );
 
@@ -362,11 +377,11 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
-                    .addComponent(dateAwal, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))
+                    .addComponent(dateAwal, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8)
-                    .addComponent(dateAkhir, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))
+                    .addComponent(dateAkhir, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE))
                 .addGap(61, 61, 61)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnCetakInvoice, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -414,7 +429,7 @@ public class Main extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 392, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1030, Short.MAX_VALUE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -424,7 +439,7 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 410, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 533, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -474,7 +489,7 @@ public class Main extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(kamarscrollpane, javax.swing.GroupLayout.DEFAULT_SIZE, 392, Short.MAX_VALUE)
+                    .addComponent(kamarscrollpane, javax.swing.GroupLayout.DEFAULT_SIZE, 1030, Short.MAX_VALUE)
                     .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -551,6 +566,9 @@ public class Main extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    public void callback(JTable table){
+        JOptionPane.showMessageDialog(null, "callback sukses");
+    }
     
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
         panelHome.setVisible(true);
@@ -603,9 +621,8 @@ public class Main extends javax.swing.JFrame {
         panelRoom.setVisible(false);
         panelGuest.setVisible(false);
         panelReport.setVisible(true);
-        Report report = new Report();
-        report.reportInvoice(TRinvoice);
-        report.reportKamar(TRkamar);
+        new Report().reportInvoice(TRinvoice);
+        new Report().reportKamar(TRkamar);
     }//GEN-LAST:event_btnReportActionPerformed
 
     private void btntambahkamarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntambahkamarActionPerformed
@@ -627,6 +644,11 @@ public class Main extends javax.swing.JFrame {
         report.reportInvoiceByDate(TRinvoice, dateAwal.getDate(), dateAkhir.getDate());
     }//GEN-LAST:event_btnLihatInvoiceActionPerformed
 
+    private void btnhapuskamarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnhapuskamarActionPerformed
+       new Kamar().hapusKamar(tableKamar,btnRoom);
+    }//GEN-LAST:event_btnhapuskamarActionPerformed
+
+    
 class Listener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -654,6 +676,7 @@ class Listener implements ActionListener {
     private javax.swing.JButton btnReport;
     private javax.swing.JButton btnRoom;
     private javax.swing.JButton btnTrans;
+    private javax.swing.JButton btnhapuskamar;
     private javax.swing.JButton btntambahkamar;
     private com.toedter.calendar.JDateChooser dateAkhir;
     private com.toedter.calendar.JDateChooser dateAwal;

@@ -6,11 +6,13 @@
 package pawitwahib.hotel;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -20,12 +22,14 @@ import pawitwahib.config.Koneksi;
  *
  * @author kapaw
  */
+
 public class Kamar extends javax.swing.JFrame {
     private Connection con = Koneksi.Koneksi();
     private Statement stat;
     private ResultSet res;
     private String sql;
     private DefaultTableModel dtm;
+    private JTable table;
 
     /**
      * Creates new form kamar
@@ -37,36 +41,22 @@ public class Kamar extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }
     
-    private void savekamar(){
-        try {
-            sql = "insert into kamar (id_tipe, no_kamar, status)  values ("
-                    + "'" + tipekamar.getSelectedIndex() + 1 + "',"
-                    + "'" + nokamar.getText()+ "',"
-                    + "'" + statuskamar.getText()+ "')";
-            stat = con.createStatement();
-            stat.executeUpdate(sql);
-            this.dispose();
-        } catch (SQLException ex) {
-            Logger.getLogger(Kamar.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
     public void getKamar(JTable tablekamar){
-        int i = 1;
         String status;
+        int i =1;
         DefaultTableModel t = new DefaultTableModel();
         t.addColumn("No");
         t.addColumn("No Kamar");
         t.addColumn("Tipe");
         t.addColumn("Harga");
         t.addColumn("Status");
+        t.addColumn("id");
         tablekamar.setModel(t);
         try{
             sql = "SELECT * FROM kamar inner join tipe_kamar on kamar.id_tipe = tipe_kamar.id";
             stat = con.createStatement();
             res = stat.executeQuery(sql);
             while(res.next()){
-                int no = i++;
                 int s = Integer.parseInt(res.getString("status"));
                 if(s != 0){
                     status ="Available";
@@ -74,16 +64,18 @@ public class Kamar extends javax.swing.JFrame {
                     status = "Occupied";
                 }
                 t.addRow(new Object[] {
-                    no,
+                    i++,
                     res.getString("no_kamar"),
                     res.getString("kategori"),
                     res.getString("harga"),
-                    status
+                    status,
+                    res.getString("id")
                 });
             }
         } catch(SQLException e){
             JOptionPane.showMessageDialog(null, e);
         }
+        tablekamar.getColumn("id").setMaxWidth(0);
     }
     
     private void getTipeKamar(){
@@ -100,6 +92,41 @@ public class Kamar extends javax.swing.JFrame {
         tipekamar.setSelectedIndex(-1);
     }
     
+    private void savekamar(){
+        try {
+            sql = "insert into kamar (id_tipe, no_kamar, status)  values ("
+                    + "'" + Integer.sum(tipekamar.getSelectedIndex(), 1)+ "',"
+                    + "'" + nokamar.getText()+ "',"
+                    + "'" + statuskamar.getText()+ "')";
+            stat = con.createStatement();
+            stat.executeUpdate(sql);
+            JOptionPane.showMessageDialog(null, "Data kamar berhasil disimpan");
+            this.dispose();
+        } catch (SQLException ex) {
+            Logger.getLogger(Kamar.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void hapusKamar(JTable tablekamar, JButton btnkamar){
+        int i = tablekamar.getSelectedRow();
+        if(i==-1){
+            JOptionPane.showMessageDialog(null, "Pilih salah satu baris");  
+        } else {
+            String id = (String)tablekamar.getValueAt(i,5);
+            int ok=JOptionPane.showConfirmDialog(null,"Apakah Yakin Mendelete record ini???", "Confirmation",JOptionPane.YES_NO_CANCEL_OPTION);
+            if (ok==0){
+                try{
+                    String sql="delete from kamar where id='"+id+"'";
+                    PreparedStatement st = con.prepareStatement(sql);
+                    st.executeUpdate();
+                    JOptionPane.showMessageDialog(null, "Delete Data Sukses");
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Delete Data Gagal");
+                }
+            }
+            btnkamar.doClick();
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
