@@ -6,14 +6,17 @@
 package pawitwahib.hotel;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -157,7 +160,7 @@ public class Transaksi {
         t.addColumn("id");
         tablecekin.setModel(t);
         try{
-            sql = "SELECT * FROM inap RIGHT join tamu on inap.id_tamu = tamu.id join kamar on kamar.id=inap.id_kamar WHERE DATE(timestamp) = CURDATE();;";
+            sql = "SELECT * FROM inap RIGHT join tamu on inap.id_tamu = tamu.id join kamar on kamar.id=inap.id_kamar WHERE DATE(timestamp) = CURDATE();";
             stat = con.createStatement();
             res = stat.executeQuery(sql);
             while(res.next()){
@@ -183,4 +186,31 @@ public class Transaksi {
         tablecekin.getColumn("id").setMaxWidth(0);
     }
     
+    public void cekout(JTable tablereservasi, JButton btntransaksi){
+        Connection con = Koneksi.Koneksi();
+        Statement stat;
+        ResultSet res;
+        String sql;
+        int i = tablereservasi.getSelectedRow();
+        if(i==-1){
+            JOptionPane.showMessageDialog(null, "Pilih salah satu baris");  
+        } else {
+            String id = (String)tablereservasi.getValueAt(i,6);
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            String tglawal = (String)tablereservasi.getValueAt(i,3);
+            LocalDate date = LocalDate.parse(tglawal.substring(0, tglawal.length() - 2), formatter);
+            int ok=JOptionPane.showConfirmDialog(null,"Chekout Tamu ini???", "Confirmation",JOptionPane.YES_NO_CANCEL_OPTION);
+            if (ok==0){
+                try{
+                    sql = "UPDATE inap SET tgl_keluar = CURDATE(), tgl_masuk = '"+date+"' where id='"+id+"'";
+                    PreparedStatement st = con.prepareStatement(sql);
+                    st.executeUpdate();
+                    JOptionPane.showMessageDialog(null, "Chekout Sukses");
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "chekout Gagal");
+                }
+            }
+            btntransaksi.doClick();
+        }
+    }
 }
