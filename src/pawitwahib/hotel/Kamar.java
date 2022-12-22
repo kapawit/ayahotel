@@ -13,6 +13,7 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -25,9 +26,6 @@ import pawitwahib.config.Koneksi;
 
 public class Kamar extends javax.swing.JFrame {
     private Connection con = Koneksi.Koneksi();
-    private Statement stat;
-    private ResultSet res;
-    private String sql;
     private DefaultTableModel dtm;
     private JTable table;
 
@@ -37,11 +35,14 @@ public class Kamar extends javax.swing.JFrame {
     
     public Kamar() {
         initComponents();
-        getTipeKamar();
+        getTipeKamar(tipekamar);
         setLocationRelativeTo(null);
     }
     
     public void getKamar(JTable tablekamar){
+        Statement stat;
+        ResultSet res;
+        String sql;
         String status;
         int i =1;
         DefaultTableModel t = new DefaultTableModel();
@@ -78,21 +79,51 @@ public class Kamar extends javax.swing.JFrame {
         tablekamar.getColumn("id").setMaxWidth(0);
     }
     
-    private void getTipeKamar(){
+    public void getTipeKamar(JComboBox cb){
+        Statement stat;
+        ResultSet res;
+        String sql;
         try{
             sql = "SELECT * FROM tipe_kamar";
             stat = con.createStatement();
             res = stat.executeQuery(sql);
             while(res.next()){
-                tipekamar.addItem(res.getString("kategori"));
+                cb.addItem(res.getString("kategori"));
             }
         } catch(SQLException e){
             JOptionPane.showMessageDialog(null, e);
         }
-        tipekamar.setSelectedIndex(-1);
+        cb.setSelectedIndex(-1);
+    }
+    
+     public String getKamarKosong(String status, int tipe){
+        Statement stat;
+        ResultSet res;
+        String sql;
+        String result = null;
+        try{
+            sql = "SELECT * FROM kamar where status = '"+status+"' and id_tipe ='"+Integer.sum(tipe,1)+"' limit 1";
+            stat = con.createStatement();
+            res = stat.executeQuery(sql);
+            if(res.next()) {
+                result = res.getString("no_kamar");
+            } else {
+                result = null;
+            }
+        } catch(SQLException e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+        if(result != null){
+            return result;
+        } else {
+            return null;
+        }
     }
     
     private void savekamar(){
+        Statement stat;
+        ResultSet res;
+        String sql;
         try {
             sql = "insert into kamar (id_tipe, no_kamar, status)  values ("
                     + "'" + Integer.sum(tipekamar.getSelectedIndex(), 1)+ "',"
@@ -108,6 +139,9 @@ public class Kamar extends javax.swing.JFrame {
     }
 
     public void hapusKamar(JTable tablekamar, JButton btnkamar){
+        Statement stat;
+        ResultSet res;
+        String sql;
         int i = tablekamar.getSelectedRow();
         if(i==-1){
             JOptionPane.showMessageDialog(null, "Pilih salah satu baris");  
@@ -116,7 +150,7 @@ public class Kamar extends javax.swing.JFrame {
             int ok=JOptionPane.showConfirmDialog(null,"Apakah Yakin Mendelete record ini???", "Confirmation",JOptionPane.YES_NO_CANCEL_OPTION);
             if (ok==0){
                 try{
-                    String sql="delete from kamar where id='"+id+"'";
+                    sql="delete from kamar where id='"+id+"'";
                     PreparedStatement st = con.prepareStatement(sql);
                     st.executeUpdate();
                     JOptionPane.showMessageDialog(null, "Delete Data Sukses");

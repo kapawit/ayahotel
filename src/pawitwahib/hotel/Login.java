@@ -4,17 +4,13 @@
  */
 package pawitwahib.hotel;
 import pawitwahib.config.*;
-import java.sql.*;
 import javax.swing.JOptionPane;
+import java.sql.*;
 /**
  *
  * @author kapaw
  */
 public class Login extends javax.swing.JFrame {
-    private Statement stat;
-    private ResultSet rs;
-    private String sql;
-    private Connection con;
     private static int Id;
     private static String Uname;
     
@@ -140,13 +136,15 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        con = Koneksi.Koneksi();
+        Connection con = Koneksi.Koneksi();
+        ResultSet rs;
+        String sql;
         try {
-            stat = con.createStatement();
+            Statement state = con.createStatement();
             char[] password = passTF.getPassword();
             String passwordString = String.valueOf(password);
             sql = "SELECT * FROM user WHERE username='"+unameTF.getText()+"' AND password='"+passwordString+"'";
-            rs = stat.executeQuery(sql);
+            rs = state.executeQuery(sql);
             if(rs.next()){
                 if (passwordString.equals(rs.getString("password"))) {
                     Id = rs.getInt("id");

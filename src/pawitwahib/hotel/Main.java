@@ -32,9 +32,9 @@ public class Main extends javax.swing.JFrame {
         btnReport.addActionListener(new Listener());
         panelHome.setVisible(true);
         UserLabel.setText("User : "+Uname);
-        new Beranda().setBackgroundImage(panelhomebg);
         new Clock().jam(labelJam);
         new Clock().kalender(labelkalender);
+        new Kamar().getTipeKamar(transaksigettipekamar);
     }
     
     /**
@@ -65,6 +65,19 @@ public class Main extends javax.swing.JFrame {
         panelhomebg = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         panelTransaction = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        transaksigettipekamar = new javax.swing.JComboBox<>();
+        transnokamar = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         panelRoom = new javax.swing.JPanel();
         btntambahkamar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -266,17 +279,115 @@ public class Main extends javax.swing.JFrame {
 
         panelKonten.add(panelHome, "card2");
 
-        panelTransaction.setBackground(new java.awt.Color(102, 255, 255));
+        panelTransaction.setBackground(new java.awt.Color(204, 204, 204));
+
+        jLabel4.setText("Tipe Kamar");
+
+        jLabel6.setText("No Kamar");
+
+        transaksigettipekamar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                transaksigettipekamarActionPerformed(evt);
+            }
+        });
+
+        transnokamar.setEnabled(false);
+
+        jButton1.setText("Sewa");
+
+        jButton2.setText("Reservasi");
+
+        jLabel9.setText("Tanggal Awal");
+
+        jLabel10.setText("Tanggal Akhir");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(transaksigettipekamar, 0, 212, Short.MAX_VALUE)
+                    .addComponent(transnokamar))
+                .addGap(42, 42, 42)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE))
+                .addGap(32, 32, 32)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jDateChooser2, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE))
+                .addGap(34, 34, 34)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel10))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(21, 21, 21))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(transaksigettipekamar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(transnokamar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane3.setViewportView(jTable1);
 
         javax.swing.GroupLayout panelTransactionLayout = new javax.swing.GroupLayout(panelTransaction);
         panelTransaction.setLayout(panelTransactionLayout);
         panelTransactionLayout.setHorizontalGroup(
             panelTransactionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(panelTransactionLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelTransactionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3))
+                .addContainerGap())
         );
         panelTransactionLayout.setVerticalGroup(
             panelTransactionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(panelTransactionLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         panelKonten.add(panelTransaction, "card3");
@@ -583,7 +694,6 @@ public class Main extends javax.swing.JFrame {
         panelRoom.setVisible(false);
         panelGuest.setVisible(false);
         panelReport.setVisible(false);
-        new Beranda().setBackgroundImage(panelhomebg);
         new Clock().jam(labelJam);
         new Clock().kalender(labelkalender);
     }//GEN-LAST:event_btnHomeActionPerformed
@@ -655,6 +765,11 @@ public class Main extends javax.swing.JFrame {
        new Kamar().hapusKamar(tableKamar,btnRoom);
     }//GEN-LAST:event_btnhapuskamarActionPerformed
 
+    private void transaksigettipekamarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transaksigettipekamarActionPerformed
+           String no = new Kamar().getKamarKosong("0", transaksigettipekamar.getSelectedIndex());
+           transnokamar.setText(no); 
+    }//GEN-LAST:event_transaksigettipekamarActionPerformed
+
     
 class Listener implements ActionListener {
     @Override
@@ -687,23 +802,34 @@ class Listener implements ActionListener {
     private javax.swing.JButton btntambahkamar;
     private com.toedter.calendar.JDateChooser dateAkhir;
     private com.toedter.calendar.JDateChooser dateAwal;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JScrollPane kamarscrollpane;
     private javax.swing.JLabel labelJam;
     private javax.swing.JLabel labelkalender;
@@ -715,5 +841,7 @@ class Listener implements ActionListener {
     private javax.swing.JPanel panelTransaction;
     private javax.swing.JPanel panelhomebg;
     private javax.swing.JTable tableKamar;
+    private javax.swing.JComboBox<String> transaksigettipekamar;
+    private javax.swing.JTextField transnokamar;
     // End of variables declaration//GEN-END:variables
 }
